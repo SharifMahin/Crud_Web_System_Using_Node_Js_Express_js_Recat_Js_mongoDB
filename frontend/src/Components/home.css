@@ -1,0 +1,67 @@
+.crudTittle {
+  text-align: center;
+  margin: 50px;
+  color: rgb(12, 12, 12);
+}
+
+.userTable {
+  width: 50%;
+  background-color: rgb(243, 238, 238);
+  border-radius: 5px;
+  box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.65);
+  margin: 80px auto;
+  padding: 20px;
+}
+
+.addButton {
+  text-decoration: none;
+  background-color: rgb(128, 78, 175);
+  color: white;
+  font-weight: 500;
+  border-radius: 5px;
+  padding: 7px;
+}
+
+.addButton:hover {
+  background-color: #b045f3;
+}
+
+.userTable table {
+  width: 100%;
+  margin-top: 15px;
+  border-collapse: collapse;
+  border-color: black;
+}
+
+.userTable table thead th {
+  background-color: rgb(128, 78, 175);
+  color: white;
+  padding: 6px;
+}
+.userTable table tbody td {
+  text-align: center;
+  padding: 5px;
+}
+
+.actionButton button {
+  border: 0;
+  outline: none;
+  background-color: red;
+  padding: 7px 15px;
+  font-weight: 500;
+  color: rgb(6, 6, 22);
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 13.5px;
+}
+
+.actionButton a {
+  background-color: green;
+  padding: 7px 14px;
+  font-weight: 500;
+  color: rgb(6, 6, 22);
+  border-radius: 5px;
+  margin: 0 10px;
+  font-size: 13.5px;
+  text-decoration: none;
+}

@@ -1,0 +1,65 @@
+.updateUser {
+  width: 30%;
+  background-color: rgb(243, 238, 238);
+  border-radius: 5px;
+  box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.65);
+  margin: 80px auto;
+  padding: 20px;
+}
+
+.updateUserForm .updateInput {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.backButton {
+  background-color: rgb(128, 78, 175);
+  padding: 7px 12px;
+  border-radius: 5px;
+  margin: 0px;
+  font-size: 13.5px;
+  text-decoration: none;
+}
+
+.backButton:hover {
+  background-color: #b045f3;
+}
+
+.updateUserTittle {
+  margin: 15px 0px;
+  color: rgb(128, 78, 175);
+}
+
+.updateInput label {
+  margin-bottom: 4px;
+  background-color: rgb(247, 103, 7);
+  width: fit-content;
+  border-radius: 3px;
+  padding: 3px 5px;
+  font-size: 15px;
+  color: white;
+}
+
+.updateInput input {
+  margin-bottom: 12px;
+  padding: 7px;
+  outline: none;
+}
+
+.updatebtn {
+  border: 0;
+  outline: none;
+  background-color: rgb(128, 78, 175);
+  padding: 10px 0px;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 15px;
+  margin-top: 20px;
+}
+
+.updatebtn:hover {
+  background-color: #b045f3;
+}

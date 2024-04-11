@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import toast from "react-hot-toast";
+import { Link, useNavigate } from "react-router-dom";
 import "./add.css";
 
 export const Add = () => {
@@ -11,6 +12,7 @@ export const Add = () => {
     password: "",
   };
   const [userData, setUserData] = useState(userDatas);
+  const navigate = useNavigate();
   const inputHandler = (e) => {
     const { name, value } = e.target;
     setUserData({ ...userData, [name]: value });
@@ -23,9 +25,17 @@ export const Add = () => {
         "http://localhost:5000/api/create",
         userData
       );
-      console.log(respone);
+      toast.success(respone.data.message, {
+        icon: "👏",
+        position: "top-right",
+        autoClose: 3000,
+      });
+      navigate("/");
     } catch (error) {
-      console.log(error.response.data);
+      toast.error("There is a server Error", {
+        position: "top-right",
+        autoClose: 3000,
+      });
     }
   };
 

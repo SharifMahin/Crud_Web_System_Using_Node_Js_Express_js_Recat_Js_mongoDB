@@ -1,8 +1,18 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./home.css";
 
 export const Home = () => {
+  const [user, setUser] = useState([]);
+  useEffect(() => {
+    const fetchAllUsers = async () => {
+      const respose = await axios.get("http://localhost:5000/api/findAll");
+      setUser(respose.data);
+    };
+    fetchAllUsers();
+  }, []);
+
   return (
     <div>
       <h1 className="crudTittle">Crud API System</h1>
@@ -20,19 +30,25 @@ export const Home = () => {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>1</td>
-              <td>Mahin</td>
-              <td>Mahin@gmail.com</td>
-              <td className="actionButton">
-                <button>
-                  <i className="fa-solid fa-trash"></i>
-                </button>
-                <Link to={"/edit"}>
-                  <i className="fa-solid fa-pen-to-square"></i>
-                </Link>
-              </td>
-            </tr>
+            {user.map((user, index) => {
+              return (
+                <tr>
+                  <td>{index + 1}</td>
+                  <td>
+                    {user.fName} {user.lName}
+                  </td>
+                  <td>{user.email}</td>
+                  <td className="actionButton">
+                    <button>
+                      <i className="fa-solid fa-trash"></i>
+                    </button>
+                    <Link to={"/edit"}>
+                      <i className="fa-solid fa-pen-to-square"></i>
+                    </Link>
+                  </td>
+                </tr>
+              );
+            })}
           </tbody>
         </table>
       </div>

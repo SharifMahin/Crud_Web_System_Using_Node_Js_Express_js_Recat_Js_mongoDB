@@ -54,7 +54,7 @@ const updateUser = async (req, res) => {
             return res.status(404).json({message: "User data not available"});
           }
         const updatedData = await userModel.findByIdAndUpdate(req.params.id,req.body,{new:true}); //{new:true} store the updated value
-        return res.status(200).json(updatedData);
+        return res.status(200).json({message: "User Data Updated Successfully"});
      }catch(error){
         return res.status(502).json({error: "There was a server side error!"});
     }   

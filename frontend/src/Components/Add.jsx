@@ -1,7 +1,8 @@
 import axios from "axios";
 import React, { useState } from "react";
-import toast from "react-hot-toast";
+//import toast from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import "./add.css";
 
 export const Add = () => {
@@ -26,15 +27,14 @@ export const Add = () => {
         userData
       );
       toast.success(respone.data.message, {
-        icon: "👏",
         position: "top-right",
-        autoClose: 3000,
+        autoClose: 2000,
       });
       navigate("/");
     } catch (error) {
       toast.error("There is a server Error", {
         position: "top-right",
-        autoClose: 3000,
+        autoClose: 2000,
       });
     }
   };

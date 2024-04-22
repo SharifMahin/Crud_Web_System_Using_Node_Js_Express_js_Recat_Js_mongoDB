@@ -1,9 +1,13 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+// import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
 import { Add } from "./Components/Add";
+import { Error } from './Components/Error';
 import { Home } from "./Components/Home";
 import { Update } from "./Components/Update";
 
+/*
+//another way to route
 function App() {
   const route = createBrowserRouter([
     {
@@ -22,6 +26,22 @@ function App() {
   return (
     <div className="App">
       <RouterProvider router={route}></RouterProvider>
+    </div>
+  );
+}
+*/
+
+function App() { 
+  return (
+    <div className="App">
+    <BrowserRouter>
+      <Routes>
+        <Route path = '/' element={<Home/>}></Route>
+        <Route path = '/add' element={<Add/>}></Route>
+        <Route path = '/edit/:id' element={<Update/>}></Route>
+        <Route path = '*' element={<Error/>}></Route>
+      </Routes>
+    </BrowserRouter>
     </div>
   );
 }

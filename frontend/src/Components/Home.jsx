@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
+import { Navbar } from "./Navbar/Navbar";
 import "./home.css";
 
 export const Home = () => {
@@ -51,6 +52,7 @@ export const Home = () => {
 
   return (
     <div>
+      <Navbar />
       <h1 className="crudTittle">Crud API System</h1>
       <div className="userTable">
         <Link to={"/add"} className="addButton">

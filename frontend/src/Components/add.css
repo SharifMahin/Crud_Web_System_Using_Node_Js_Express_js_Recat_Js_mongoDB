@@ -1,9 +1,15 @@
+.addTittle {
+  text-align: center;
+  margin: 20px;
+  color: rgb(12, 12, 12);
+}
+
 .addUser {
-  width: 30%;
+  width: 40%;
   background-color: rgb(243, 238, 238);
   border-radius: 5px;
   box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.65);
-  margin: 80px auto;
+  margin: 35px auto;
   padding: 20px;
 }
 

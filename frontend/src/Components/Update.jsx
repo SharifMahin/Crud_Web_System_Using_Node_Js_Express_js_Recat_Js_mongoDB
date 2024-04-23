@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
+import { Navbar } from "./Navbar/Navbar";
 import "./add.css";
 import "./update.css";
 
@@ -53,57 +54,61 @@ export const Update = () => {
   };
 
   return (
-    <div className="updateUser">
-      <Link to={"/"} className="backButton">
-        <i class="fa-solid fa-backward"></i>
-      </Link>
-      <h3 className="updateUserTittle">Edit user</h3>
-      <form action="" className="updateUserForm" onSubmit={upDateForm}>
-        <div className="updateInput">
-          <label htmlFor="fName">First Name</label>
-          <input
-            type="text"
-            onChange={inputHandler}
-            id="fName"
-            name="fName"
-            value={user.fName}
-            autoComplete="off"
-            placeholder="Enter the first name"
-            required
-          />
-        </div>
-        <div className="updateInput">
-          <label htmlFor="lName">Last Name</label>
-          <input
-            type="text"
-            onChange={inputHandler}
-            id="lName"
-            name="lName"
-            value={user.lName}
-            autoComplete="off"
-            placeholder="Enter the last name"
-            required
-          />
-        </div>
-        <div className="updateInput">
-          <label htmlFor="email">Email</label>
-          <input
-            type="email"
-            onChange={inputHandler}
-            id="email"
-            name="email"
-            value={user.email}
-            autoComplete="off"
-            placeholder="Enter the email"
-            required
-          />
-        </div>
-        <div className="updateInput">
-          <button type="submit" className="updatebtn">
-            Update
-          </button>
-        </div>
-      </form>
+    <div>
+      <Navbar />
+      <h1 className="updateTittle">Update User Info</h1>
+      <div className="updateUser">
+        <Link to={"/"} className="backButton">
+          <i class="fa-solid fa-backward"></i>
+        </Link>
+        <h3 className="updateUserTittle">Edit user</h3>
+        <form action="" className="updateUserForm" onSubmit={upDateForm}>
+          <div className="updateInput">
+            <label htmlFor="fName">First Name</label>
+            <input
+              type="text"
+              onChange={inputHandler}
+              id="fName"
+              name="fName"
+              value={user.fName}
+              autoComplete="off"
+              placeholder="Enter the first name"
+              required
+            />
+          </div>
+          <div className="updateInput">
+            <label htmlFor="lName">Last Name</label>
+            <input
+              type="text"
+              onChange={inputHandler}
+              id="lName"
+              name="lName"
+              value={user.lName}
+              autoComplete="off"
+              placeholder="Enter the last name"
+              required
+            />
+          </div>
+          <div className="updateInput">
+            <label htmlFor="email">Email</label>
+            <input
+              type="email"
+              onChange={inputHandler}
+              id="email"
+              name="email"
+              value={user.email}
+              autoComplete="off"
+              placeholder="Enter the email"
+              required
+            />
+          </div>
+          <div className="updateInput">
+            <button type="submit" className="updatebtn">
+              Update
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
   );
 };

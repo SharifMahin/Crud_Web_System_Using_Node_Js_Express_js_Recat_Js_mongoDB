@@ -1,6 +1,7 @@
 // import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
+import { About } from './Components/About';
 import { Add } from "./Components/Add";
 import { Error } from './Components/Error';
 import { Home } from "./Components/Home";
@@ -38,6 +39,7 @@ function App() {
       <Routes>
         <Route path = '/' element={<Home/>}></Route>
         <Route path = '/add' element={<Add/>}></Route>
+        <Route path = '/about' element={<About/>}></Route>
         <Route path = '/edit/:id' element={<Update/>}></Route>
         <Route path = '*' element={<Error/>}></Route>
       </Routes>

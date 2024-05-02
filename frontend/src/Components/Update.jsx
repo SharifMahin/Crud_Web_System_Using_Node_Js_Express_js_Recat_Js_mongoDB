@@ -44,7 +44,7 @@ export const Update = () => {
         position: "top-right",
         autoClose: 3000,
       });
-      navigate("/");
+      navigate("/Home");
     } catch (error) {
       toast.error("There is a server Error", {
         position: "top-right",
@@ -58,7 +58,7 @@ export const Update = () => {
       <Navbar />
       <h1 className="updateTittle">Update User Info</h1>
       <div className="updateUser">
-        <Link to={"/"} className="backButton">
+        <Link to={"/Home"} className="backButton">
           <i class="fa-solid fa-backward"></i>
         </Link>
         <h3 className="updateUserTittle">Edit user</h3>

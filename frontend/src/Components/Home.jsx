@@ -58,9 +58,9 @@ export const Home = () => {
         <Link to={"/add"} className="addButton">
           add user
         </Link>
-        <table border={1} cellPadding={10} cellSpacing={0}>
+        <table className="table-bordered" cellPadding={10} cellSpacing={0}>
           <thead>
-            <tr>
+            <tr className="text-center">
               <th>Serial No</th>
               <th>Name</th>
               <th>Email</th>

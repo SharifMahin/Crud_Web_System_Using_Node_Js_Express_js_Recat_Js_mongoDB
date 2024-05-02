@@ -4,7 +4,7 @@
   color: rgb(12, 12, 12);
 }
 
-.addUser {
+.addNewUser {
   width: 40%;
   background-color: rgb(243, 238, 238);
   border-radius: 5px;
@@ -46,6 +46,20 @@
   padding: 3px 5px;
   font-size: 15px;
   color: white;
+}
+
+.radioBttn label {
+  margin-bottom: 4px;
+  background-color: rgb(247, 103, 7);
+  width: fit-content;
+  border-radius: 3px;
+  padding: 3px 5px;
+  font-size: 15px;
+  color: white;
+}
+
+.spaceRadio input {
+  margin-left: 10px;
 }
 
 .addInput input {

@@ -1,5 +1,46 @@
 const userModel = require('../model/userSchema.js');
+const loginModel = require('../model/loginUserSchema.js')
+const bcrypt = require("bcrypt");
 const mongoose = require("mongoose");
+
+// //Login User
+// const loginfunc = async (req, res) => {
+// //check the data 
+// try{
+//     const check = await loginModel.findOne(req.body.email);
+//     if(!check){
+//        return res.send("Invalid Username");
+//     }
+//     const isPasswordMatch = await bcrypt.compare(req.body.password,check.password);
+//     if(!isPasswordMatch){
+//         return res.send("Invalid password");
+//     }
+//     else{
+//         return res.status(200).json({message: "Login Succesfully"});
+//     }
+//     }catch{
+//         return res.status(500).json({error: "There was a server side error!"});      
+//     }  
+// }
+
+//Login User
+const Loginfo = async (req,res) => {
+    //check the data
+    try{
+        const check = await loginModel.findOne({email:req.body.email});        
+        if(!check){
+            return res.status(203).json({message: "invalid Email"});
+        }
+        else if(check.password!=req.body.password){
+            return res.status(204).json({message: "invalid password"});
+        }
+        else{
+            return res.status(200).json({message: "Login Succesfully"});
+        }
+    }catch{
+        return res.status(500).json({error: "There was a server side error!"});
+    }
+}
 
 //Create User data
 const create = async (req, res) => {
@@ -74,4 +115,4 @@ const deleteUser = async (req, res) => {
     }   
  }
 
-module.exports = {create,fetchAllUser,fetchUser,updateUser,deleteUser};
+module.exports = {Loginfo,create,fetchAllUser,fetchUser,updateUser,deleteUser};

@@ -1,7 +1,8 @@
 const express = require("express");
 const router = express.Router();
-const {create,fetchAllUser,fetchUser,updateUser,deleteUser} = require("../controller/userController.js");
+const {fetchAllUser,fetchUser,updateUser,deleteUser, create, Loginfo} = require("../controller/userController.js");
 
+router.post("/login", Loginfo)
 router.post("/create", create);
 router.get("/findAll",fetchAllUser);
 router.get("/findOne/:id",fetchUser);

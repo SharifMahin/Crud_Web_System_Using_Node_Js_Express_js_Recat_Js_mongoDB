@@ -1,0 +1,59 @@
+.addTittle {
+  text-align: center;
+  margin: 20px;
+  color: rgb(12, 12, 12);
+}
+
+.loginUser {
+  width: 22%;
+  background-color: rgb(243, 238, 238);
+  border-radius: 5px;
+  box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.65);
+  margin: 75px auto;
+  padding: 20px;
+}
+
+.addUserForm .addInput {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.addLoginTittle {
+  text-align: center;
+  margin: 15px 0px;
+  color: rgb(128, 78, 175);
+}
+
+.addInput label {
+  margin-bottom: 4px;
+  background-color: rgb(247, 103, 7);
+  width: fit-content;
+  border-radius: 3px;
+  padding: 3px 5px;
+  font-size: 15px;
+  color: white;
+}
+
+.addInput input {
+  margin-bottom: 12px;
+  padding: 7px;
+  outline: none;
+}
+
+.addLoginbtn {
+  border: 0;
+  outline: none;
+  background-color: rgb(4, 4, 161);
+  padding: 10px 0px;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 15px;
+  margin-top: 20px;
+}
+
+.addLoginbtn:hover {
+  background-color: rgb(128, 78, 175);
+}

@@ -18,20 +18,21 @@ export const Add = () => {
   const inputHandler = (e) => {
     const { name, value } = e.target;
     setUserData({ ...userData, [name]: value });
+    //console.log(userData);
   };
 
   const submitForm = async (event) => {
     try {
       event.preventDefault();
-      const respone = await axios.post(
+      const response = await axios.post(
         "http://localhost:5000/api/create",
         userData
       );
-      toast.success(respone.data.message, {
+      toast.success(response.data.message, {
         position: "top-right",
         autoClose: 2000,
       });
-      navigate("/");
+      navigate("/Home");
     } catch (error) {
       toast.error("There is a server Error", {
         position: "top-right",
@@ -44,8 +45,8 @@ export const Add = () => {
     <div>
       <Navbar />
       <h1 className="addTittle">Create New User</h1>
-      <div className="addUser">
-        <Link to={"/"} className="backButton">
+      <div className="addNewUser">
+        <Link to={"/Home"} className="backButton">
           <i class="fa-solid fa-backward"></i>
         </Link>
         <h3 className="addUserTittle">Add New User</h3>
@@ -98,6 +99,22 @@ export const Add = () => {
               required
             />
           </div>
+          {/* <div className="addInput">
+            <label htmlFor="country">Country</label>
+            <select
+              id="country"
+              name="country"
+              value={userData.country}
+              onChange={inputHandler}
+              required
+            >
+              <option value="">Choose Country Name</option>
+              <option value="Bangladesh">Bangladesh</option>
+              <option value="Canada">Canada</option>
+              <option value="Finland">Finland</option>
+              <option value="Japan">Japan</option>
+            </select>
+          </div> */}
           <div className="addInput">
             <button type="submit" className="addSubmitbtn">
               Save

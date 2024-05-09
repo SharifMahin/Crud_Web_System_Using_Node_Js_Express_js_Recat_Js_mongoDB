@@ -11,6 +11,11 @@
   text-decoration: none;
 }
 
+.nav-item-logout {
+  margin-left: 750px;
+  margin-top: 13px;
+}
+
 .nav-item a:hover {
   background: #804eaf;
   color: black;

@@ -24,7 +24,6 @@ export const Login = () => {
         loginData
       );
       if (response.status === 200) {
-        console.log(response.data);
         toast.success(response.data.message, {
           position: "top-right",
           autoClose: 2000,

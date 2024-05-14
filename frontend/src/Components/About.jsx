@@ -8,10 +8,23 @@ export const About = () => {
       <Navbar />
       <h1 className="aboutTitle">About the System</h1>
       <div className="container">
-        <h6 className="aboutDetail">
-          Tsis is the Simple Crud Api, where user can register their
-          Information,Update the Information and also can delete the user Data.
-        </h6>
+        <div className="aboutDetail">
+          <h6>
+            This is the Simple Crud Api, where user can register their
+            Information,Update the Information and also can delete the user
+            Data.
+          </h6>
+          <p className="paraDetail">
+            To see my other project{" "}
+            <a
+              href="https://weatherapp000913.netlify.app/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Click
+            </a>
+          </p>
+        </div>
       </div>
     </div>
   );

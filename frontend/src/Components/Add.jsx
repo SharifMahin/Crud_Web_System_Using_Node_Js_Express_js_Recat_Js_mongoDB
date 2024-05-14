@@ -12,13 +12,16 @@ export const Add = () => {
     lName: "",
     email: "",
     password: "",
+    country: "",
+    gender: "",
   };
   const [userData, setUserData] = useState(userDatas);
   const navigate = useNavigate();
   const inputHandler = (e) => {
+    //setUserData({ ...userData, [e.target.name]: e.target.value }); //same work like below code
     const { name, value } = e.target;
     setUserData({ ...userData, [name]: value });
-    //console.log(userData);
+    console.log(userData);
   };
 
   const submitForm = async (event) => {
@@ -28,11 +31,23 @@ export const Add = () => {
         "http://localhost:5000/api/create",
         userData
       );
-      toast.success(response.data.message, {
-        position: "top-right",
-        autoClose: 2000,
-      });
-      navigate("/Home");
+      if (response.data.message === "This email already exist") {
+        toast.error(response.data.message, {
+          position: "top-right",
+          autoClose: 2000,
+        });
+      } else if (response.data.message === "Fill the Input field") {
+        toast.error(response.data.message, {
+          position: "top-right",
+          autoClose: 2000,
+        });
+      } else {
+        toast.success(response.data.message, {
+          position: "top-right",
+          autoClose: 2000,
+        });
+        navigate("/Home");
+      }
     } catch (error) {
       toast.error("There is a server Error", {
         position: "top-right",
@@ -99,7 +114,33 @@ export const Add = () => {
               required
             />
           </div>
-          {/* <div className="addInput">
+          <div className="radioBtn">
+            <label className="radioLabel" htmlFor="gender">
+              Gender
+            </label>
+            <div className="spaceRadio">
+              <input
+                type="radio"
+                id="male"
+                name="gender"
+                value="Male"
+                checked={userData.gender === "Male"}
+                onChange={inputHandler}
+                required
+              />
+              <label htmlFor="male">Male</label>
+              <input
+                type="radio"
+                id="female"
+                name="gender"
+                value="Female"
+                checked={userData.gender === "Female"}
+                onChange={inputHandler}
+              />
+              <label htmlFor="Female"> Female</label>
+            </div>
+          </div>
+          <div className="addInput">
             <label htmlFor="country">Country</label>
             <select
               id="country"
@@ -113,8 +154,10 @@ export const Add = () => {
               <option value="Canada">Canada</option>
               <option value="Finland">Finland</option>
               <option value="Japan">Japan</option>
+              <option value="New Zealand">New Zealand</option>
+              <option value="USA">USA</option>
             </select>
-          </div> */}
+          </div>
           <div className="addInput">
             <button type="submit" className="addSubmitbtn">
               Save

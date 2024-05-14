@@ -6,9 +6,9 @@
 
 .aboutDetail {
   color: rgb(8, 8, 8);
-  border: 1px solid rgb(247, 7, 7);
+  border: 1px solid rgb(223, 247, 7);
   padding: 10px;
-  width: 600px;
+  width: 700px;
   height: auto;
   text-align: justify;
   margin: auto;
@@ -16,4 +16,8 @@
   border-radius: 5px;
   background-color: white;
   box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.65);
+}
+
+.paraDetail {
+  color: rgb(247, 8, 8);
 }

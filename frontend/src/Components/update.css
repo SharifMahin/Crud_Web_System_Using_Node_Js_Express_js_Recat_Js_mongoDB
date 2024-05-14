@@ -48,9 +48,33 @@
   color: white;
 }
 
+.upRadioLabel {
+  margin-bottom: 4px;
+  background-color: rgb(247, 103, 7);
+  width: fit-content;
+  border-radius: 3px;
+  padding: 3px 5px;
+  font-size: 15px;
+  color: white;
+}
+
+.upSpaceRadio input {
+  margin-right: 3px;
+}
+
+.upSpaceRadio label {
+  margin-right: 12px;
+}
+
 .updateInput input {
   margin-bottom: 12px;
   padding: 7px;
+  outline: none;
+}
+
+.updateInput select {
+  margin-bottom: 12px;
+  padding: 9px;
   outline: none;
 }
 

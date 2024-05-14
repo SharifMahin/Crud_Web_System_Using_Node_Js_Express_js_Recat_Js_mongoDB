@@ -36,15 +36,28 @@ export const Update = () => {
   const upDateForm = async (event) => {
     try {
       event.preventDefault();
-      const respone = await axios.put(
+      const response = await axios.put(
         `http://localhost:5000/api/update/${id}`,
         user
       );
-      toast.success(respone.data.message, {
-        position: "top-right",
-        autoClose: 3000,
-      });
-      navigate("/Home");
+      if (response.data.message === "User data not available") {
+        toast.error(response.data.message, {
+          position: "top-right",
+          autoClose: 2000,
+        });
+        navigate("/Home");
+      } else if (response.data.message === "Fill the Input field") {
+        toast.error(response.data.message, {
+          position: "top-right",
+          autoClose: 2000,
+        });
+      } else {
+        toast.success(response.data.message, {
+          position: "top-right",
+          autoClose: 3000,
+        });
+        navigate("/Home");
+      }
     } catch (error) {
       toast.error("There is a server Error", {
         position: "top-right",
@@ -99,8 +112,52 @@ export const Update = () => {
               value={user.email}
               autoComplete="off"
               placeholder="Enter the email"
-              required
+              readOnly
             />
+          </div>
+          <div className="upRadioBtn">
+            <label className="upRadioLabel" htmlFor="gender">
+              Gender
+            </label>
+            <div className="upSpaceRadio">
+              <input
+                type="radio"
+                id="male"
+                name="gender"
+                value="Male"
+                checked={user.gender === "Male"}
+                onChange={inputHandler}
+                required
+              />
+              <label htmlFor="male">Male</label>
+              <input
+                type="radio"
+                id="female"
+                name="gender"
+                value="Female"
+                checked={user.gender === "Female"}
+                onChange={inputHandler}
+              />
+              <label htmlFor="Female"> Female</label>
+            </div>
+          </div>
+          <div className="updateInput">
+            <label htmlFor="country">Country</label>
+            <select
+              id="country"
+              name="country"
+              value={user.country}
+              onChange={inputHandler}
+              required
+            >
+              <option value="">Choose Country Name</option>
+              <option value="Bangladesh">Bangladesh</option>
+              <option value="Canada">Canada</option>
+              <option value="Finland">Finland</option>
+              <option value="Japan">Japan</option>
+              <option value="New Zealand">New Zealand</option>
+              <option value="USA">USA</option>
+            </select>
           </div>
           <div className="updateInput">
             <button type="submit" className="updatebtn">

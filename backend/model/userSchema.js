@@ -18,6 +18,12 @@ const userSchema = new mongoose.Schema({
         type: String,
         //required: true
     },
+    gender: {
+        type: String,
+    },
+    country: {
+        type: String,
+    }
 });
 
 //create model

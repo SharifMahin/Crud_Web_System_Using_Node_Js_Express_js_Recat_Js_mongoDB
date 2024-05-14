@@ -5,11 +5,11 @@
 }
 
 .addNewUser {
-  width: 40%;
+  width: 45%;
   background-color: rgb(243, 238, 238);
   border-radius: 5px;
   box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.65);
-  margin: 35px auto;
+  margin: 25px auto;
   padding: 20px;
 }
 
@@ -48,7 +48,7 @@
   color: white;
 }
 
-.radioBttn label {
+.radioLabel {
   margin-bottom: 4px;
   background-color: rgb(247, 103, 7);
   width: fit-content;
@@ -59,12 +59,22 @@
 }
 
 .spaceRadio input {
-  margin-left: 10px;
+  margin-right: 3px;
+}
+
+.spaceRadio label {
+  margin-right: 12px;
 }
 
 .addInput input {
   margin-bottom: 12px;
   padding: 7px;
+  outline: none;
+}
+
+.addInput select {
+  margin-bottom: 12px;
+  padding: 9px;
   outline: none;
 }
 

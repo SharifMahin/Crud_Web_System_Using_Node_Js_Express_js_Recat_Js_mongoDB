@@ -25,12 +25,29 @@ const Loginfo = async (req,res) => {
 //Create User data
 const create = async (req, res) => {
     try{
-        const userData = new userModel(req.body);
-        if(!userData){
-            return res.status(404).json({message: "Input data empty"});
+        const { fName, lName, email, password, gender, country } = req.body;
+        // Check if the email already exists
+        const existEmailCheck = await userModel.findOne({email}); 
+        if(existEmailCheck){
+           return res.json({message: "This email already exist"});
+         }
+        else if(!fName || !lName || !email || !password || !gender || !country){
+            return res.json({message: "Fill the Input field"});
         }else{
+            const saltrounds = 10; 
+            const hashedPassword = await bcrypt.hash(password, saltrounds); // Hash the password
+            // Create a new user with the hashed password
+            const userData = new userModel({
+                fName,
+                lName,
+                email,
+                password: hashedPassword, // Replace plain-text password with hashed password
+                gender,
+                country
+            });            
+            // Save the user data to the database
            const saveData = await userData.save();
-           return res.status(200).json({message: "User Created Succesfully"});
+           return res.json({message: "User Created Succesfully"});
         }
     }catch(error){
         return res.status(500).json({erroe: error});
@@ -71,11 +88,17 @@ const fetchUser = async (req, res) => {
 const updateUser = async (req, res) => {
     try{
         const existData = await userModel.findById(req.params.id);
+        const userData = new userModel(req.body);
          if(!existData){
-            return res.status(404).json({message: "User data not available"});
+            return res.json({message: "User data not available"});
+          }         
+         else if(!userData.fName || !userData.lName || !userData.email || !userData.gender || !userData.country){
+              return res.json({message: "Fill the Input field"});
           }
-        const updatedData = await userModel.findByIdAndUpdate(req.params.id,req.body,{new:true}); //{new:true} store the updated value
-        return res.status(200).json({message: "User Data Updated Successfully"});
+        else{
+            const updatedData = await userModel.findByIdAndUpdate(req.params.id,req.body,{new:true}); //{new:true} store the updated value
+            return res.json({message: "User Data Updated Successfully"});
+        }
      }catch(error){
         return res.status(502).json({error: "There was a server side error!"});
     }   

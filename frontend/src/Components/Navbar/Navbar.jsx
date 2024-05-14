@@ -19,6 +19,8 @@ export const Navbar = () => {
           <a
             className="navbar-brand"
             href="https://github.com/SharifMahin/Crud_Web_System_Using_Node_Js_Express_js_Recat_Js_mongoDB"
+            target="_blank"
+            rel="noreferrer"
           >
             <img className="imageCustom" src={logo} alt="Icon" />
           </a>
@@ -36,7 +38,7 @@ export const Navbar = () => {
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
-                <NavLink class="nav-link actives" to="/Home">
+                <NavLink class="nav-link actives" to="/home">
                   Home
                 </NavLink>
               </li>

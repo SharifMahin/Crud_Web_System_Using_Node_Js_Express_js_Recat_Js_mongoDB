@@ -63,6 +63,8 @@ export const Home = () => {
               <th>Serial No</th>
               <th>Name</th>
               <th>Email</th>
+              <th>Gender</th>
+              <th>Country</th>
               <th>Action</th>
             </tr>
           </thead>
@@ -75,6 +77,8 @@ export const Home = () => {
                     {user.fName} {user.lName}
                   </td>
                   <td>{user.email}</td>
+                  <td>{user.gender}</td>
+                  <td>{user.country}</td>
                   <td className="actionButton">
                     <button
                       onClick={() => {

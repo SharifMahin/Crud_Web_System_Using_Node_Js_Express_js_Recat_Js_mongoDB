@@ -1,24 +1,38 @@
 const userModel = require('../model/userSchema.js');
-const loginModel = require('../model/loginUserSchema.js')
 const bcrypt = require("bcrypt");
 const mongoose = require("mongoose");
+const jwt = require("jsonwebtoken");
+const dotenv = require("dotenv");
 
+
+dotenv.config();
 //Login User
 const Loginfo = async (req,res) => {
-    //check the data
+
     try{
-        const check = await loginModel.findOne({email:req.body.email});        
+        //check the data
+        const check = await userModel.findOne({email:req.body.email});       
         if(!check){
-            return res.status(203).json({message: "invalid Email"});
+            return res.status(200).json({message: "Invalid Email"});
         }
-        else if(check.password!=req.body.password){
-            return res.status(204).json({message: "invalid password"});
+        const isPasswordMatch = await bcrypt.compare(req.body.password,check.password);
+        if(isPasswordMatch){
+            //generate token
+            const token = jwt.sign({
+                email: check.email,
+                country: check.country
+            },process.env.JWT_SECRET_KEY,{
+                expiresIn: '2h'
+            });
+            //console.log(token);
+            return res.status(200).json({"message": "Login Succesfully"}); 
         }
         else{
-            return res.status(200).json({message: "Login Succesfully"});
+            return res.status(401).json({message: "Password not match"});
         }
-    }catch{
-        return res.status(500).json({error: "There was a server side error!"});
+    }catch(error){
+        console.error("Login Error:", error);
+        return res.status(500).json({message: "Authentication Failed"});
     }
 }
 

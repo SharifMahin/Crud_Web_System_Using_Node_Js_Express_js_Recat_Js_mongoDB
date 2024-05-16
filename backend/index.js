@@ -9,7 +9,7 @@ const app = express();
 //to access .env file
 dotenv.config();
 app.use(bodyParser.json());
-//app.use(express.json());
+app.use(express.json());
 app.use(cors());
 
 //import port number from .env file

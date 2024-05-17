@@ -23,27 +23,29 @@ export const Login = () => {
         "http://localhost:5000/api/login",
         loginData
       );
-      if (response.status === 200) {
+      if (response.data.message === "Login Succesfully") {
+        // Store the token in localStorage
+        localStorage.setItem("access_token", response.data.access_token);
         toast.success(response.data.message, {
           position: "top-right",
-          autoClose: 2000,
+          autoClose: 1000,
         });
         navigate("/Home");
-      } else if (response.status === 203) {
+      } else if (response.data.message === "Invalid Email") {
         toast.error("Invalid Email", {
           position: "top-right",
-          autoClose: 2000,
+          autoClose: 1000,
         });
-      } else if (response.status === 204) {
+      } else if (response.data.message === "Password not match") {
         toast.error("Invalid Password", {
           position: "top-right",
-          autoClose: 2000,
+          autoClose: 1000,
         });
       }
     } catch (error) {
-      toast.error("There is a server Error", {
+      toast.error("Authentication Failed", {
         position: "top-right",
-        autoClose: 2000,
+        autoClose: 1000,
       });
     }
   };

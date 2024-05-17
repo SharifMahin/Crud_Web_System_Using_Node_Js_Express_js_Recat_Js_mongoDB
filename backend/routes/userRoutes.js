@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const {fetchAllUser,fetchUser,updateUser,deleteUser, create, Loginfo} = require("../controller/userController.js");
+const checkLogin = require("../checkLoginMiddleware/checkLogin.js");
 
 router.post("/login", Loginfo)
 router.post("/create", create);

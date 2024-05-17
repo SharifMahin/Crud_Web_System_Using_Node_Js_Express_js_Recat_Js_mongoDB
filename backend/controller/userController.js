@@ -13,26 +13,27 @@ const Loginfo = async (req,res) => {
         //check the data
         const check = await userModel.findOne({email:req.body.email});       
         if(!check){
-            return res.status(200).json({message: "Invalid Email"});
+            return res.json({message: "Invalid Email"});
         }
         const isPasswordMatch = await bcrypt.compare(req.body.password,check.password);
         if(isPasswordMatch){
             //generate token
             const token = jwt.sign({
+                _id: check._id,
                 email: check.email,
                 country: check.country
             },process.env.JWT_SECRET_KEY,{
-                expiresIn: '2h'
+                expiresIn: '1m'
             });
             //console.log(token);
-            return res.status(200).json({"message": "Login Succesfully"}); 
+            return res.json({"message": "Login Succesfully","access_token":token}); 
         }
         else{
-            return res.status(401).json({message: "Password not match"});
+            return res.json({message: "Password not match"});
         }
     }catch(error){
         console.error("Login Error:", error);
-        return res.status(500).json({message: "Authentication Failed"});
+        return res.json({message: "Authentication Failed"});
     }
 }
 

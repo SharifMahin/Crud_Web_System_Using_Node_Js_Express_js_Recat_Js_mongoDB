@@ -46,7 +46,7 @@ export const Add = () => {
           position: "top-right",
           autoClose: 2000,
         });
-        navigate("/Home");
+        navigate("/home");
       }
     } catch (error) {
       toast.error("There is a server Error", {

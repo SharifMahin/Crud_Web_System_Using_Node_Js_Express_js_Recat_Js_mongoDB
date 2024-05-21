@@ -21,16 +21,18 @@ export const Login = () => {
       event.preventDefault();
       const response = await axios.post(
         "http://localhost:5000/api/login",
-        loginData
+        loginData,
+        { withCredentials: true } // Include credentials (cookies)
       );
       if (response.data.message === "Login Succesfully") {
         // Store the token in localStorage
-        localStorage.setItem("access_token", response.data.access_token);
+        // localStorage.setItem("token", response.data.token);
+        // console.log(response.data.token);
         toast.success(response.data.message, {
           position: "top-right",
           autoClose: 1000,
         });
-        navigate("/Home");
+        navigate("/home");
       } else if (response.data.message === "Invalid Email") {
         toast.error("Invalid Email", {
           position: "top-right",

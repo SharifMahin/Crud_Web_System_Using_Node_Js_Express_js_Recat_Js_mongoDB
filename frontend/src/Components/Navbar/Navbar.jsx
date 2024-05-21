@@ -1,16 +1,33 @@
+import axios from "axios";
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import "./navbar.css";
 import logo from "./octocat-1713322084876.png";
 
 export const Navbar = () => {
-  //const navigate = useNavigate();
-  // const handleLogout = () => {
-  //   // Clear user token from sessionStorage
-  //   // sessionStorage.removeItem("isLoggedIn");
-  //   // Redirect to login page
-  //   navigate("/");
-  // };
+  const navigate = useNavigate();
+  const handleLogout = async () => {
+    try {
+      await axios.post(
+        `http://localhost:5000/api/logout`,
+        {},
+        {
+          withCredentials: true,
+        }
+      );
+      toast.success("Logged out successfully", {
+        position: "top-right",
+        autoClose: 1000,
+      });
+      navigate("/"); // Redirect to login page
+    } catch (error) {
+      toast.error("Logout failed. Please try again.", {
+        position: "top-right",
+        autoClose: 1000,
+      });
+    }
+  };
 
   return (
     <div className="NavbarDetail">
@@ -52,11 +69,11 @@ export const Navbar = () => {
                   About
                 </NavLink>
               </li>
-              {/* <li className="nav-item-logout">
+              <li className="nav-item-logout">
                 <button className="btn btn-danger" onClick={handleLogout}>
                   Logout
                 </button>
-              </li> */}
+              </li>
             </ul>
             {/* <form class="d-flex">
               <input

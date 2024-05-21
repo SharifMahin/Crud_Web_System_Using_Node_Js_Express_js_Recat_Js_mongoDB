@@ -23,10 +23,11 @@ const Loginfo = async (req,res) => {
                 email: check.email,
                 country: check.country
             },process.env.JWT_SECRET_KEY,{
-                expiresIn: '1m'
+                expiresIn: '24h'
             });
-            //console.log(token);
-            return res.json({"message": "Login Succesfully","access_token":token}); 
+            console.log(token);
+             res.cookie('jwt',token,{ httpOnly: true , maxAge: 24 * 60 * 60 * 1000 });
+             return res.json({"message": "Login Succesfully"}); 
         }
         else{
             return res.json({message: "Password not match"});
@@ -36,6 +37,17 @@ const Loginfo = async (req,res) => {
         return res.json({message: "Authentication Failed"});
     }
 }
+
+
+// logout
+const logout = async (req, res) => {
+    try {
+      res.cookie('jwt', '', { maxAge: 0 });
+      return res.status(200).json({ message: "Logout Successfully" });
+    } catch (error) {
+      return res.status(502).json({ error: "There was a server-side error!" });
+    }
+  };
 
 //Create User data
 const create = async (req, res) => {
@@ -74,7 +86,7 @@ const create = async (req, res) => {
 const fetchAllUser = async (req, res) => {
    try{
         const existData = await userModel.find();
-        if(existData==''){
+        if(existData.length === 0){
             return res.status(404).json({message: "No data available"});
         }else{
            return res.status(200).json(existData);
@@ -133,4 +145,4 @@ const deleteUser = async (req, res) => {
     }   
  }
 
-module.exports = {Loginfo,create,fetchAllUser,fetchUser,updateUser,deleteUser};
+module.exports = {Loginfo,logout,create,fetchAllUser,fetchUser,updateUser,deleteUser};

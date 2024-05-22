@@ -38,6 +38,10 @@ const Loginfo = async (req,res) => {
     }
 }
 
+//chexkauth
+const auth = (req, res) => {
+    res.status(200).json({ message: "User is authenticated" });
+  };
 
 // logout
 const logout = async (req, res) => {
@@ -145,4 +149,4 @@ const deleteUser = async (req, res) => {
     }   
  }
 
-module.exports = {Loginfo,logout,create,fetchAllUser,fetchUser,updateUser,deleteUser};
+module.exports = {Loginfo,logout,create,fetchAllUser,fetchUser,updateUser,deleteUser,auth};

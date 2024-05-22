@@ -7,6 +7,7 @@ import { Navbar } from "./Navbar/Navbar";
 import "./home.css";
 export const Home = () => {
   const [isAuthorized, setisAuthorized] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [user, setUser] = useState([]);
   const navigate = useNavigate();
   useEffect(() => {
@@ -37,10 +38,12 @@ export const Home = () => {
             theme: "dark",
           });
         }
+      } finally {
+        setIsLoading(false);
       }
     })();
     // fetchAllUsers();
-  }, []);
+  }, [navigate]);
 
   const deleteUser = async (userId) => {
     try {
@@ -70,7 +73,9 @@ export const Home = () => {
   };
   return (
     <div>
-      {isAuthorized ? (
+      {isLoading ? (
+        <div>Loading...</div>
+      ) : isAuthorized ? (
         <>
           <Navbar />
           <h1 className="crudTittle">Crud API System</h1>
@@ -119,7 +124,9 @@ export const Home = () => {
             </table>
           </div>
         </>
-      ) : null}
+      ) : (
+        <h2 className="errorTitle">Unauthorized Authentication</h2>
+      )}
     </div>
   );
 };

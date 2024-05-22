@@ -25,9 +25,6 @@ export const Login = () => {
         { withCredentials: true } // Include credentials (cookies)
       );
       if (response.data.message === "Login Succesfully") {
-        // Store the token in localStorage
-        // localStorage.setItem("token", response.data.token);
-        // console.log(response.data.token);
         toast.success(response.data.message, {
           position: "top-right",
           autoClose: 1000,

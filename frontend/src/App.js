@@ -6,6 +6,7 @@ import { Add } from "./Components/Add";
 import { Error } from './Components/Error';
 import { Home } from "./Components/Home";
 import { Login } from './Components/Login';
+import ProtectedRoute from './Components/ProtectedRoute';
 import { Update } from "./Components/Update";
 
 
@@ -41,10 +42,11 @@ function App() {
       <Routes>
         <Route path = '/home' element={<Home/>}></Route>
         <Route path = '/' element={<Login/>}></Route>
-        <Route path = '/add' element={<Add/>}></Route>
-        <Route path = '/about' element={<About/>}></Route>
-        <Route path = '/edit/:id' element={<Update/>}></Route>
-        <Route path = '*' element={<Error/>}></Route>
+        <Route path='/add' element={<ProtectedRoute element={Add} />} />
+        <Route path='/about' element={<ProtectedRoute element={About} />} // Wrap About with ProtectedRoute
+        /> 
+        <Route path='/edit/:id' element={<ProtectedRoute element={Update} />} />
+        <Route path='/*' element={<Error/>}></Route>
       </Routes>
     </BrowserRouter>
     </div>

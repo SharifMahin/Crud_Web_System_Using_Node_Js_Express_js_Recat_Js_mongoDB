@@ -10,6 +10,12 @@
   color: rgb(12, 12, 12);
 }
 
+.errorTitle {
+  text-align: center;
+  margin: 20px;
+  color: rgb(12, 12, 12);
+}
+
 .userTable {
   width: 60%;
   background-color: rgb(243, 238, 238);

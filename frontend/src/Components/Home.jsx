@@ -5,10 +5,12 @@ import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { Navbar } from "./Navbar/Navbar";
 import "./home.css";
+import search_icon from "./search.png";
 export const Home = () => {
   const [isAuthorized, setisAuthorized] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [user, setUser] = useState([]);
+  const [searchQuery, setSearchQuery] = useState("");
   const navigate = useNavigate();
   useEffect(() => {
     (async () => {
@@ -71,6 +73,50 @@ export const Home = () => {
       });
     }
   };
+
+  const handleSearch = async () => {
+    try {
+      // Check if the search query is empty
+      if (!searchQuery.trim()) {
+        toast.error("Search input is required", {
+          position: "top-right",
+          autoClose: 2000,
+        });
+        setUser([]);
+        return;
+      }
+
+      const response = await axios.get(
+        `http://localhost:5000/api/search/${searchQuery}`,
+        {
+          withCredentials: true,
+        }
+      );
+      if (Array.isArray(response.data.existData)) {
+        toast.success("Succesfully find the data", {
+          position: "top-right",
+          autoClose: 2000,
+        });
+        setUser(response.data.existData);
+      }
+    } catch (error) {
+      setUser([]);
+      if (error.response && error.response.status === 404) {
+        toast.error("No data available by your request", {
+          position: "top-right",
+          autoClose: 2000,
+        });
+      } else {
+        toast.warn("There was an error fetching the search results", {
+          position: "top-right",
+          autoClose: 1000,
+          hideProgressBar: false,
+          theme: "dark",
+        });
+      }
+    }
+  };
+
   return (
     <div>
       {isLoading ? (
@@ -80,9 +126,22 @@ export const Home = () => {
           <Navbar />
           <h1 className="crudTittle">Crud API System</h1>
           <div className="userTable">
-            <Link to={"/add"} className="addButton">
-              add user
-            </Link>
+            <div className="topPart">
+              <Link to={"/add"} className="addButton">
+                add user
+              </Link>
+              <input
+                type="text"
+                placeholder="Search By country"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+              />
+              <div className="search-icon">
+                <button onClick={handleSearch}>
+                  <img src={search_icon} alt="search" />
+                </button>
+              </div>
+            </div>
             <table className="table-bordered" cellPadding={10} cellSpacing={0}>
               <thead>
                 <tr className="text-center">

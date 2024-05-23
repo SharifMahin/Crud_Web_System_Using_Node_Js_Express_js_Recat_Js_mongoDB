@@ -77,3 +77,35 @@
   font-size: 13.5px;
   text-decoration: none;
 }
+
+.topPart {
+  display: flex;
+  justify-content: start;
+  gap: 25px;
+}
+
+.topPart input {
+  border-radius: 20px;
+  color: rgb(128, 78, 175);
+  display: flex;
+  border: dashed 1px;
+  width: 535px;
+  height: 40px;
+  background: whitesmoke;
+  outline: none;
+  font-size: 18px;
+  font-weight: 400;
+  padding-left: 15px;
+}
+
+.search-icon button {
+  width: 40px;
+  height: 40px;
+  border-radius: 40px;
+  border: solid 1px;
+  border-color: #804eaf;
+  cursor: pointer;
+  padding-left: 3px;
+  padding-top: 1px;
+  background: whitesmoke;
+}

@@ -149,4 +149,29 @@ const deleteUser = async (req, res) => {
     }   
  }
 
-module.exports = {Loginfo,logout,create,fetchAllUser,fetchUser,updateUser,deleteUser,auth};
+// Search Users
+const searchUsers = async (req, res) => {
+    try{
+        const { key } = req.params;
+        const searchQuery = {
+            $or: [
+                { fName: { $regex: `^${key}$`, $options: "i" } },  //exact match
+                { lName: { $regex: `^${key}$`, $options: "i" } },  //exact match
+                { email: { $regex: `^${key}$`, $options: "i" } }, //exact match
+                { country: { $regex: key, $options: "i" } }, //partial match
+                { gender: { $regex: `^${key}$`, $options: "i" } }  //exact match
+                ]
+            };
+
+        const existData = await userModel.find(searchQuery);
+
+        if(existData.length === 0){
+            return res.status(404).json({message: "User data not available"});
+        }
+            return res.status(200).json({existData});
+    }catch(error){
+            return res.status(502).json({error: "There was a server side error!"});
+    }   
+ }
+
+module.exports = {Loginfo,logout,create,fetchAllUser,fetchUser,updateUser,deleteUser,auth,searchUsers};

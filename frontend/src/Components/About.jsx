@@ -36,10 +36,6 @@ export const About = () => {
             >
               Weather App
             </a>
-            <br />
-            <a href="" target="_blank" rel="noreferrer">
-              Crud API
-            </a>
           </h4>
         </div>
       </div>

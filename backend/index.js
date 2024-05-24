@@ -9,7 +9,6 @@ const cookieP = require('cookie-parser')
 const app = express();
 dotenv.config(); //to access .env file
 app.use(cookieP()); // Middleware to parse cookies
-app.use(bodyParser.json());
 app.use(express.json());
 
 // CORS configuration to allow cookies

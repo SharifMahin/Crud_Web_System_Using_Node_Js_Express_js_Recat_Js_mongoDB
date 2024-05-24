@@ -7,8 +7,7 @@ const routeHandler = require("./routes/userRoutes.js");
 const cookieP = require('cookie-parser')
 
 const app = express();
-//to access .env file
-dotenv.config();
+dotenv.config(); //to access .env file
 app.use(cookieP()); // Middleware to parse cookies
 app.use(bodyParser.json());
 app.use(express.json());
@@ -19,8 +18,8 @@ app.use(cors({
     origin: ['http://localhost:3000'] 
   }));
 
-//import port number from .env file
-const port = process.env.PORT;
+
+const port = process.env.PORT;  //import port number from .env file
 
 app.listen(port,()=>{
     console.log(`Running the server port at http://localhost:${port}`);

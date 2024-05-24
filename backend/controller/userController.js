@@ -10,10 +10,10 @@ dotenv.config();
 const Loginfo = async (req,res) => {
 
     try{
-        //check the data
-        const check = await userModel.findOne({email:req.body.email});       
+        //check the data by exist email with case insensitivity. $options: 'i' makes the regex case-insensitive.
+        const check = await userModel.findOne({ email: { $regex: `^${req.body.email}$`, $options: 'i' } });       
         if(!check){
-            return res.json({message: "Invalid Email"});
+            return res.json({message: "Email not register"});
         }
         const isPasswordMatch = await bcrypt.compare(req.body.password,check.password);
         if(isPasswordMatch){
@@ -25,7 +25,6 @@ const Loginfo = async (req,res) => {
             },process.env.JWT_SECRET_KEY,{
                 expiresIn: '24h'
             });
-            console.log(token);
              res.cookie('jwt',token,{ httpOnly: true , maxAge: 24 * 60 * 60 * 1000 });
              return res.json({"message": "Login Succesfully"}); 
         }
@@ -57,8 +56,8 @@ const logout = async (req, res) => {
 const create = async (req, res) => {
     try{
         const { fName, lName, email, password, gender, country } = req.body;
-        // Check if the email already exists
-        const existEmailCheck = await userModel.findOne({email}); 
+        // Check if the email already exists with case insensitivity. $options: 'i' makes the regex case-insensitive.
+        const existEmailCheck = await userModel.findOne({ email: { $regex: `^${email}$`, $options: 'i' } }); 
         if(existEmailCheck){
            return res.json({message: "This email already exist"});
          }
@@ -76,8 +75,7 @@ const create = async (req, res) => {
                 gender,
                 country
             });            
-            // Save the user data to the database
-           const saveData = await userData.save();
+           const saveData = await userData.save();   // Save the user data to the database
            return res.json({message: "User Created Succesfully"});
         }
     }catch(error){
@@ -105,7 +103,6 @@ const fetchUser = async (req, res) => {
     try{
         const retriveOne = await userModel.findById(req.params.id);
          if(retriveOne){
-             //return res.status(404).json({message: "No data available"});
              return res.status(200).json(retriveOne);
           }else{
             return res.status(404).json({message: "User data not available"});
@@ -158,7 +155,7 @@ const searchUsers = async (req, res) => {
                 { fName: { $regex: `^${key}$`, $options: "i" } },  //exact match
                 { lName: { $regex: `^${key}$`, $options: "i" } },  //exact match
                 { email: { $regex: `^${key}$`, $options: "i" } }, //exact match
-                { country: { $regex: key, $options: "i" } }, //partial match
+                { country: { $regex:`^${key}$`, $options: "i" } }, //partial match
                 { gender: { $regex: `^${key}$`, $options: "i" } }  //exact match
                 ]
             };

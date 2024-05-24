@@ -30,8 +30,8 @@ export const Login = () => {
           autoClose: 1000,
         });
         navigate("/home");
-      } else if (response.data.message === "Invalid Email") {
-        toast.error("Invalid Email", {
+      } else if (response.data.message === "Email not register") {
+        toast.error("Email not register", {
           position: "top-right",
           autoClose: 1000,
         });

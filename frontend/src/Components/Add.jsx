@@ -59,7 +59,7 @@ export const Add = () => {
   return (
     <div>
       <Navbar />
-      <h1 className="addTittle">Create New User</h1>
+      <h1 className="createTittle">Create New User</h1>
       <div className="addNewUser">
         <Link to={"/Home"} className="backButton">
           <i class="fa-solid fa-backward"></i>
@@ -150,9 +150,13 @@ export const Add = () => {
               required
             >
               <option value="">Choose Country Name</option>
+              <option value="Australia">Australia</option>
               <option value="Bangladesh">Bangladesh</option>
               <option value="Canada">Canada</option>
+              <option value="England">England</option>
+              <option value="France">France</option>
               <option value="Finland">Finland</option>
+              <option value="Germany">Germany</option>
               <option value="Japan">Japan</option>
               <option value="New Zealand">New Zealand</option>
               <option value="USA">USA</option>

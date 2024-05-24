@@ -1,12 +1,12 @@
 .aboutTitle {
   text-align: center;
-  margin-top: 20px;
+  margin-top: 10px;
   color: black;
 }
 
 .aboutDetail {
   color: rgb(8, 8, 8);
-  border: 1px solid rgb(223, 247, 7);
+  border: 1px solid #fc0808;
   padding: 10px;
   width: 700px;
   height: auto;
@@ -14,10 +14,25 @@
   margin: auto;
   margin-top: 20px;
   border-radius: 5px;
-  background-color: white;
   box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.65);
+  font-size: large;
 }
 
-.paraDetail {
-  color: rgb(247, 8, 8);
+.aboutDetail p1 a {
+  color: rgb(255, 251, 0);
+  text-decoration: none;
+}
+
+.para2Detail {
+  margin-top: 50px;
+}
+
+.projectDetail {
+  margin-top: 30px;
+  font-style: italic;
+}
+
+.projectDetail a {
+  color: red;
+  text-decoration: none;
 }

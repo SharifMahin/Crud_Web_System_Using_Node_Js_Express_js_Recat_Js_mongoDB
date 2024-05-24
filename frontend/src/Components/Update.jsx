@@ -151,9 +151,13 @@ export const Update = () => {
               required
             >
               <option value="">Choose Country Name</option>
+              <option value="Australia">Australia</option>
               <option value="Bangladesh">Bangladesh</option>
               <option value="Canada">Canada</option>
+              <option value="England">England</option>
+              <option value="France">France</option>
               <option value="Finland">Finland</option>
+              <option value="Germany">Germany</option>
               <option value="Japan">Japan</option>
               <option value="New Zealand">New Zealand</option>
               <option value="USA">USA</option>

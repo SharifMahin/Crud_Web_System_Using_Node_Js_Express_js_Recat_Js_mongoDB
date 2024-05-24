@@ -4,7 +4,6 @@ const dotenv = require("dotenv");
 dotenv.config();
 const uri = process.env.URI;
 
-
 // //direct call 
 // const connect = mongoose.connect(uri);
 // connect.then(() => {
@@ -15,7 +14,6 @@ const uri = process.env.URI;
 // });
 
 // module.exports = connect;
-
 
 const connection = async () => {
     try{

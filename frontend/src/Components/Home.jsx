@@ -82,7 +82,7 @@ export const Home = () => {
           position: "top-right",
           autoClose: 2000,
         });
-        setUser([]);
+        // setUser([]); //if empty keyword then setUser make empty
         return;
       }
 
@@ -132,7 +132,7 @@ export const Home = () => {
               </Link>
               <input
                 type="text"
-                placeholder="Search By country"
+                placeholder="Search"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
               />

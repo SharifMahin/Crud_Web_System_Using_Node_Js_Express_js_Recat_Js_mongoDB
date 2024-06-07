@@ -37,6 +37,17 @@ export const About = () => {
               Weather App
             </a>
           </h4>
+          <h4 className="projectDetail">
+            Check my recent qualifiation certificate below.
+            <br />
+            <a
+              href="https://www.credly.com/badges/1e687075-199b-4073-93ef-d704c03ba665/print"
+              target="_blank"
+              rel="noreferrer"
+            >
+              GitHub Foundations
+            </a>
+          </h4>
         </div>
       </div>
     </div>

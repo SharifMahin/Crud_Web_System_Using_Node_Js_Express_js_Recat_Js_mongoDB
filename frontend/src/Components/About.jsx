@@ -41,6 +41,22 @@ export const About = () => {
             Check my recent qualifiation certificate below.
             <br />
             <a
+              href="https://learn.microsoft.com/api/credentials/share/en-us/SharifMahin-3987/5139B004BBACF0B8?sharingId=7494EF6C2B8B04EA"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Azure Administrator Associate
+            </a>
+            <br />
+            <a
+              href="https://learn.microsoft.com/api/credentials/share/en-us/SharifMahin-3987/FFCEA150D88B906E?sharingId=7494EF6C2B8B04EA"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Azure Fundamentals
+            </a>
+            <br />
+            <a
               href="https://www.credly.com/badges/1e687075-199b-4073-93ef-d704c03ba665/print"
               target="_blank"
               rel="noreferrer"
